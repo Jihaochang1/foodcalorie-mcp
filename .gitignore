@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Build output
+dist/
+build/
+
+# License data (never commit)
+licenses.db
+*.db
+
+# OS / editor
+.DS_Store
+Thumbs.db

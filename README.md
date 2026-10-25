@@ -5,6 +5,10 @@
 [![Python](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/)
 [![MCP SDK](https://img.shields.io/badge/MCP-v2.x-green.svg)](https://github.com/modelcontextprotocol/python-sdk)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+[![PyPI version](https://img.shields.io/pypi/v/foodcalorie-mcp.svg)](https://pypi.org/project/foodcalorie-mcp/)
+[![PyPI downloads](https://img.shields.io/pypi/dm/foodcalorie-mcp.svg)](https://pypi.org/project/foodcalorie-mcp/)
+
+---
 
 ## 🚀 快速开始
 
@@ -20,7 +24,7 @@ pip install -e .
 foodcalorie-mcp
 ```
 
-### 配置 Claude/Cursor
+### 配置 Claude / Cursor / WorkBuddy
 
 在 `.claude/settings.json` 或 `cursorrules` 中添加：
 
@@ -35,14 +39,20 @@ foodcalorie-mcp
 }
 ```
 
+---
+
 ## 📖 可用工具
 
 | 工具 | 描述 | 参数 |
 |------|------|------|
 | `search_food_by_barcode` | 通过条形码查询食品营养数据 | `barcode: string` |
-| `search_food_by_name` | 通过名称关键词搜索食品 | `keyword: string`, `limit: int` |
-| `get_daily_nutrition_summary` | 计算每日营养摄入汇总 | `items: list[dict]` |
+| `search_food_by_name` | 通过名称关键词搜索食品（支持品牌联想） | `keyword: string`, `limit: int` |
+| `get_daily_nutrition_summary` | 计算每日营养摄入汇总及每日值占比 | `items: list[dict]` |
 | `get_health_tip` | 获取健康饮食建议 | `food_name: string` |
+| `list_foods_by_category` | 按类别列出食品 | `category: string?`, `limit: int` |
+| `compare_foods` | 多食品营养成分对比 | `barcode_list: list[str]` |
+
+---
 
 ## 💡 使用示例
 
@@ -55,44 +65,67 @@ AI: 调用 search_food_by_barcode(barcode="6901234567890")
 ### 计算每日摄入
 ```
 用户: 我今天吃了可乐、牛奶和鸡胸肉，帮我计算总热量
-AI: 调用 get_daily_nutrition_summary(items=[...])
+AI: 调用 get_daily_nutrition_summary(items=[{"barcode":"6901234567890"}, ...])
 ```
 
-## 🎯 商业化路线
-
-### Free Tier
-- 基础食品数据库（500+ 商品）
-- 条形码查询
-- 名称搜索
-
-### Pro Tier (¥29/月)
-- 实时价格数据（美团/京东）
-- 饮食计划生成
-- 健康报告导出
-
-### Enterprise (定制报价)
-- API 访问
-- 私有数据集
-- 定制化服务
-
-## 🏗️ 架构
-
+### 按类别浏览
 ```
-FoodCalorie MCP Server
-├── 核心工具层 (server.py)
-├── 数据层 (SQLite/PostgreSQL)
-├── 外部API (条形码查询、价格追踪)
-└── 认证层 (License Key验证)
+AI: 调用 list_foods_by_category(category="肉类", limit=5)
 ```
 
-## 📦 发布到MCP Marketplace
+### 对比食品
+```
+AI: 调用 compare_foods(barcode_list=["6961234567890", "6961234567896"])
+```
 
-1. 注册 [MCP Marketplace](https://mcpmarketplace.io)
-2. 上传包（支持Python SDK）
-3. 配置定价和许可密钥
-4. 发布并同步到 mcp.so、PulseMCP
+---
 
-## 🔧 开发
+## 🎯 免费 vs Pro
+
+### Free Tier（免费）
+- ✅ 100+ 条中国食品数据库
+- ✅ 条形码查询
+- ✅ 名称搜索（支持中英文）
+- ✅ 每日营养汇总
+- ✅ 健康饮食建议
+- ✅ 品类浏览 & 营养对比
+
+### Pro Tier（¥29/月，即将上线）
+- ✅ **所有Free功能**
+- ✅ 实时价格追踪（美团/京东接口）
+- ✅ 个性化饮食计划生成
+- ✅ 健康报告导出（PDF）
+- ✅ 优先技术支持
+- ✅ 无广告体验
+
+### Enterprise（定制报价）
+- ✅ **所有Pro功能**
+- ✅ API 访问权限
+- ✅ 私有数据集定制
+- ✅ 专属技术支持
+- ✅ 品牌白标选项
+- ✅ SLA 保障
+
+---
+
+## 📦 数据库覆盖
+
+| 分类 | 数量 | 代表品牌 |
+|------|------|----------|
+| 饮料 | 22 | 可口可乐、农夫山泉、元气森林、瑞幸、喜茶... |
+| 快餐 | 11 | 麦当劳、肯德基、汉堡王、沙县、老乡鸡... |
+| 零食 | 10 | 乐事、奥利奥、三只松鼠、卫龙... |
+| 水果 | 8 | 苹果、香蕉、草莓、猕猴桃... |
+| 乳制品 | 7 | 伊利、蒙牛、安慕希、简爱... |
+| 肉类 | 6 | 鸡胸肉、牛肉、猪肉、三文鱼... |
+| 主食 | 6 | 米饭、面条、饺子、炒饭... |
+| 便利店 | 3 | 全家、7-11、罗森便当 |
+| 火锅食材 | 3 | 毛肚、肥牛、虾滑 |
+| ... | ... | ... |
+
+---
+
+## 🛠️ 开发
 
 ```bash
 # 安装开发依赖
@@ -105,34 +138,49 @@ pytest tests/
 ruff format src/
 ```
 
+---
+
 ## 📄 许可证
 
 Apache-2.0
+
+---
 
 ## 🤝 贡献
 
 欢迎 PR！请先 Fork 并创建特性分支。
 
-## 📞 联系与支持
+---
 
-### 技术支持
-- **付费咨询服务**: ¥500-2000/小时（企业客户专享）
-- **定制开发**: ¥10,000-50,000/项目
-- **企业培训**: ¥1,000-2,000/人/天
-- 联系邮箱: jihaochang1@github.com
+## 💼 技术服务 & 商业合作
 
-### 赞助项目
-如果这个项目对你有帮助，欢迎赞助支持：
-- [GitHub Sponsors](https://github.com/sponsors/Jihaochang1) 💝
-- 或一次性捐赠: [Buy Me a Coffee](https://buymeacoffee.com/jihaochang) ☕
+### MCP 定制开发
+基于你的数据源或业务场景，快速开发专属 MCP Server。
 
-### 商业合作
-- 企业定制部署: ¥20,000起
-- 私有化部署: ¥50,000起
-- 数据定制服务: 面议
+- **定价**: ¥2,000 - 10,000 / 项目
+- **交付**: 完整代码 + 文档 + 部署支持
+- **联系**: [GitHub Issues](https://github.com/Jihaochang1/foodcalorie-mcp/issues) 或邮件
+
+### MCP 技术咨询
+帮你排查 MCP 配置问题、调试工具逻辑、优化性能。
+
+- **定价**: ¥500 - 1,000 / 小时
+- **形式**: 远程视频 / 文字沟通
+- **联系**: [GitHub Issues](https://github.com/Jihaochang1/foodcalorie-mcp/issues)
+
+### 企业私有化部署
+为企业提供本地化部署 + 定制化数据接入。
+
+- **定价**: ¥10,000 起（根据需求报价）
+- **包含**: 部署 + 培训 + 3个月技术支持
+
+### 联系方式
+- **邮箱**: jihaochang1@github.com
+- **GitHub**: [@Jihaochang1](https://github.com/Jihaochang1)
+- **付款方式**: 联系后提供（支持支付宝 / 银行转账）
 
 ---
 
-*让AI帮你吃得健康！* 🥗
+*让 AI 帮你吃得健康！* 🥗
 
 **⭐ 如果觉得有用，请给个 Star！你的支持是我持续维护的动力**
