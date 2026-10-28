@@ -10,6 +10,12 @@
 
 ---
 
+> 🛡️ **由给官方 MCP SDK 提交过代码的开发者维护**：`modelcontextprotocol/python-sdk` [#3746](https://github.com/modelcontextprotocol/python-sdk/pull/3746) 已合并，另有多个 SDK PR 在审。生产级、可溯源的中国食品数据，放心用。
+
+> 🍔 **想要连锁餐饮真实菜单数据？** 免费版覆盖 103 条通用中国食品；**FoodCalorie Pro（¥49 一次性买断）** 额外提供 **116 条 / 14 个连锁品牌**（肯德基、麦当劳、星巴克、瑞幸、海底捞、蜜雪冰城…）的真实菜单热量，含咖啡因/钠/过敏原，每条带官方来源链接，并赠价值 ¥99 的 Windows 运维工具箱。
+> 👉 **[查看 Pro 详情并扫码购买 ¥49](https://jihaochang1.github.io/foodcalorie-pro/)**
+> 📖 技术文章：[《我给官方 MCP SDK 提了 PR，顺手做了个给 AI Agent 用的中国连锁餐饮热量库》](https://gist.github.com/Jihaochang1/a1411087f9d4db4551ab08cfef66c9cc)
+
 ## 🚀 快速开始
 
 ### 安装
@@ -154,32 +160,13 @@ Apache-2.0
 
 ---
 
-## 💼 技术服务 & 商业合作
+## 🤝 企业 / 团队定制（递延机会，非日常重点）
 
-### MCP 定制开发
-基于你的数据源或业务场景，快速开发专属 MCP Server。
+FoodCalorie Pro 是主力产品；若你需要**私有化部署、定制数据集或专属 MCP 开发**，我们提供项目制定制（¥10,000 起）。这类需求出现时再启动，不占用日常精力。
 
-- **定价**: ¥2,000 - 10,000 / 项目
-- **交付**: 完整代码 + 文档 + 部署支持
-- **联系**: [GitHub Issues](https://github.com/Jihaochang1/foodcalorie-mcp/issues) 或邮件
-
-### MCP 技术咨询
-帮你排查 MCP 配置问题、调试工具逻辑、优化性能。
-
-- **定价**: ¥500 - 1,000 / 小时
-- **形式**: 远程视频 / 文字沟通
-- **联系**: [GitHub Issues](https://github.com/Jihaochang1/foodcalorie-mcp/issues)
-
-### 企业私有化部署
-为企业提供本地化部署 + 定制化数据接入。
-
-- **定价**: ¥10,000 起（根据需求报价）
-- **包含**: 部署 + 培训 + 3个月技术支持
-
-### 联系方式
-- **邮箱**: jihaochang1@github.com
-- **GitHub**: [@Jihaochang1](https://github.com/Jihaochang1)
-- **付款方式**: 联系后提供（支持支付宝 / 银行转账）
+- **联系**：[GitHub Issues](https://github.com/Jihaochang1/foodcalorie-mcp/issues) 或邮件 jihaochang1@github.com
+- **GitHub**：[@Jihaochang1](https://github.com/Jihaochang1)
+- **付款**：支付宝（个人）/ 银行对公（企业）
 
 ---
 
