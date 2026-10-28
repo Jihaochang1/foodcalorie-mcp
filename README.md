@@ -12,8 +12,8 @@
 
 > 🛡️ **由给官方 MCP SDK 提交过代码的开发者维护**：`modelcontextprotocol/python-sdk` [#3746](https://github.com/modelcontextprotocol/python-sdk/pull/3746) 已合并，另有多个 SDK PR 在审。生产级、可溯源的中国食品数据，放心用。
 
-> 🍔 **想要连锁餐饮真实菜单数据？** 免费版覆盖 103 条通用中国食品；**FoodCalorie Pro（¥49 一次性买断）** 额外提供 **116 条 / 14 个连锁品牌**（肯德基、麦当劳、星巴克、瑞幸、海底捞、蜜雪冰城…）的真实菜单热量，含咖啡因/钠/过敏原，每条带官方来源链接，并赠价值 ¥99 的 Windows 运维工具箱。
-> 👉 **[查看 Pro 详情并扫码购买 ¥49](https://jihaochang1.github.io/foodcalorie-pro/)**
+> 🍔 **想要连锁餐饮真实菜单数据？** 免费版覆盖 103 条通用中国食品；**FoodCalorie Pro（早鸟价 ¥29 限时，原价 ¥49 一次性买断）** 额外提供 **116 条 / 14 个连锁品牌**（肯德基、麦当劳、星巴克、瑞幸、海底捞、蜜雪冰城…）的真实菜单热量，含咖啡因/钠/过敏原，每条带官方来源链接，并赠价值 ¥99 的 Windows 运维工具箱。
+> 👉 **[查看 Pro 详情并扫码购买（早鸟 ¥29）](https://jihaochang1.github.io/foodcalorie-pro/)**
 > 📖 技术文章：[《我给官方 MCP SDK 提了 PR，顺手做了个给 AI Agent 用的中国连锁餐饮热量库》](https://gist.github.com/Jihaochang1/a1411087f9d4db4551ab08cfef66c9cc)
 
 ## 🚀 快速开始
@@ -96,7 +96,7 @@ AI: 调用 compare_foods(barcode_list=["6961234567890", "6961234567896"])
 - ✅ 健康饮食建议
 - ✅ 品类浏览 & 营养对比
 
-### Pro Tier（¥49 买断制）
+### Pro Tier（早鸟 ¥29 限时，原价 ¥49 买断制）
 - ✅ **所有Free功能**
 - ✅ **116条连锁餐饮品牌数据**（肯德基、麦当劳、星巴克、瑞幸、蜜雪冰城等14个品牌）
 - ✅ 含咖啡因、钠含量、过敏原等详细营养指标
@@ -104,7 +104,7 @@ AI: 调用 compare_foods(barcode_list=["6961234567890", "6961234567896"])
 - ✅ 小版本更新免费（新增品牌持续加入）
 - ✅ 三行代码即可集成到您的 MCP 服务
 
-> 💰 **立即购买** 👉 [查看 FoodCalorie Pro 详情页](https://jihaochang1.github.io/foodcalorie-pro/) 扫码支付宝 ¥49 买断
+> 💰 **立即购买** 👉 [查看 FoodCalorie Pro 详情页](https://jihaochang1.github.io/foodcalorie-pro/) 扫码支付宝 ¥29 早鸟价买断（原价 ¥49）
 
 ### Enterprise（定制报价）
 - ✅ **所有Pro功能**
