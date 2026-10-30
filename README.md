@@ -14,7 +14,7 @@
 
 > 🍔 **想要连锁餐饮真实菜单数据？** 免费版覆盖 103 条通用中国食品；**FoodCalorie Pro（早鸟价 ¥29 限时，原价 ¥49 一次性买断）** 额外提供 **116 条 / 14 个连锁品牌**（肯德基、麦当劳、星巴克、瑞幸、海底捞、蜜雪冰城…）的真实菜单热量，含咖啡因/钠/过敏原，每条带官方来源链接，并赠价值 ¥99 的 Windows 运维工具箱。
 > 👉 **[查看 Pro 详情并扫码购买（早鸟 ¥29）](https://jihaochang1.github.io/foodcalorie-pro/)**
-> 📖 技术文章：[《我给官方 MCP SDK 提了 PR，顺手做了个给 AI Agent 用的中国连锁餐饮热量库》](https://gist.github.com/Jihaochang1/a1411087f9d4db4551ab08cfef66c9cc)
+> 📖 技术文章：[《我给官方 MCP SDK 提了 PR，顺手做了个给 AI Agent 用的中国连锁餐饮热量库》](https://jihaochang1.github.io/foodcalorie-pro/article.html)
 
 ## 🚀 快速开始
 
