@@ -1,6 +1,6 @@
 # FoodCalorie MCP Server
 
-> 中国食品营养数据 MCP 服务器 —— 让 AI Agent 查得到、算得准、不瞎猜
+**Chinese food & restaurant-chain nutrition data for AI agents** — 6 MCP tools so your agent stops guessing how many calories are in a Luckin coconut latte.
 
 [![Python](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/)
 [![MCP SDK](https://img.shields.io/badge/MCP-v2.x-green.svg)](https://github.com/modelcontextprotocol/python-sdk)
@@ -8,9 +8,103 @@
 [![PyPI version](https://img.shields.io/pypi/v/foodcalorie-mcp.svg)](https://pypi.org/project/foodcalorie-mcp/)
 [![PyPI downloads](https://img.shields.io/pypi/dm/foodcalorie-mcp.svg)](https://pypi.org/project/foodcalorie-mcp/)
 
+**[English](#english) · [中文](#中文)**
+
 ---
 
-> 🛡️ 维护者向官方 MCP SDK 提交过 PR：`modelcontextprotocol/python-sdk` [#3746](https://github.com/modelcontextprotocol/python-sdk/pull/3746)、`typescript-sdk` [#3076](https://github.com/modelcontextprotocol/typescript-sdk/pull/3076) / [#3118](https://github.com/modelcontextprotocol/typescript-sdk/pull/3118)，均在 maintainer 审核中。
+<a name="english"></a>
+
+## English
+
+### Why this exists
+
+English nutrition data is everywhere — OpenFoodFacts, USDA, MyFitnessPal. **Chinese chain-restaurant menu data is not.** Ask an agent "how many calories in a Luckin coconut latte?" and it will either hallucinate a number or hand you a US Starbucks value as if it were the same thing.
+
+This server gives your agent the actual data, with source links, and — just as importantly — **tells it when a field is missing instead of inventing one**.
+
+### Install
+
+```bash
+pip install foodcalorie-mcp
+```
+
+> Mirror lag: Aliyun/Tsinghua mirrors can be a few days behind. To get the current version immediately, add `--index-url https://pypi.org/simple`.
+
+### Configure
+
+```json
+{
+  "mcpServers": {
+    "foodcalorie": {
+      "command": "python",
+      "args": ["-m", "foodcalorie_mcp.server"]
+    }
+  }
+}
+```
+
+Works with Claude Desktop, Cursor, Cline, WorkBuddy — anything that speaks MCP over stdio.
+
+### Tools
+
+| Tool | What it does |
+|---|---|
+| `search_food_by_name` | **Primary lookup.** Keyword search, Chinese or English, brand-aware (`瑞幸`, `luckin`, `蜜雪`) |
+| `get_daily_nutrition_summary` | Sum a day's intake and show % of daily reference values |
+| `compare_foods` | Side-by-side macro comparison across several items |
+| `list_foods_by_category` | Browse by category (drinks / fast food / snacks / dairy / fruit…) |
+| `get_health_tip` | Short dietary note for a given food |
+| `search_food_by_barcode` | Barcode lookup — **see caveat below before relying on it** |
+
+### ⚠️ Barcode caveat (read this first)
+
+The free database is keyed on **example barcodes** (`6901234567890`-style sequential placeholders), **not real EAN codes printed on packaging.** So:
+
+- Scanning a real product barcode **will not find it** — that is not a bug, there is simply no real-barcode mapping in the free set.
+- Use `search_food_by_name` or `list_foods_by_category` instead.
+- `search_food_by_barcode` is kept for signature compatibility and for you to load your own mapping into.
+
+We put this at the top rather than let you discover it after installing.
+
+### Data coverage (stated honestly)
+
+Free tier: **103 items**, calories/protein/fat/carbs **103/103**.
+
+Pro tier: **116 items across 14 Chinese chains** — calories **116/116**, official source link **116/116**, but macros are only present where the official page actually publishes them:
+
+| Field | Coverage |
+|---|---|
+| Calories · source link · brand · item name | 116 / 116 |
+| Protein | 59 / 116 |
+| Fat | 61 / 116 |
+| Carbs | 54 / 116 |
+| Sugar | 15 / 116 |
+| Sodium | 4 / 116 |
+| Caffeine | 21 / 116 |
+| **Allergens** | **0 — not provided** |
+
+If you need "all 20 fields filled on every row", this is not that product — datasets like that are mostly fabricated. If you need "present means real, absent means absent", that is exactly the design premise here.
+
+### Pricing
+
+| Channel | Price | Delivery |
+|---|---|---|
+| **Agensi** (overseas, recommended) | **$6.99 USD** one-time | Instant, auto-delivered → <https://www.agensi.io/skills/foodcalorie-pro-data> |
+| Direct (Alipay / WeChat, China) | **¥29** early bird → ¥49 | Manual, within 12h → <https://jihaochang1.github.io/foodcalorie-pro/> |
+
+Both are one-time purchases, not subscriptions. Code is Apache-2.0; the Pro data pack is single-user, non-transferable.
+
+### Maintainer
+
+PRs to the official MCP SDK: `modelcontextprotocol/python-sdk` [#3746](https://github.com/modelcontextprotocol/python-sdk/pull/3746), `typescript-sdk` [#3076](https://github.com/modelcontextprotocol/typescript-sdk/pull/3076) / [#3118](https://github.com/modelcontextprotocol/typescript-sdk/pull/3118).
+
+---
+
+<a name="中文"></a>
+
+## 中文
+
+> 中国食品营养数据 MCP 服务器 —— 让 AI Agent 查得到、算得准、不瞎猜
 
 > 🍔 **FoodCalorie Pro（¥49 一次性买断，早鸟 ¥29 限时至 2026-11-04）**
 > 在免费版 103 条通用食品之外，另含 **116 条 / 14 个连锁品牌**的菜单数据（肯德基 24、海底捞 20、蜜雪冰城 16、麦当劳 14、星巴克 14、瑞幸 11、喜茶 5、古茗 4…），**卡路里 116/116 全覆盖**，每条都带官方来源链接。
