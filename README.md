@@ -10,7 +10,7 @@
 
 ---
 
-> 🛡️ **由给官方 MCP SDK 提交过代码的开发者维护**：`modelcontextprotocol/python-sdk` [#3746](https://github.com/modelcontextprotocol/python-sdk/pull/3746) 已合并，另有多个 SDK PR 在审。生产级、可溯源的中国食品数据，放心用。
+> 🛡️ **由向官方 MCP SDK 提交过 PR 的开发者维护**：`modelcontextprotocol/python-sdk` [#3746](https://github.com/modelcontextprotocol/python-sdk/pull/3746)、`typescript-sdk` [#3076](https://github.com/modelcontextprotocol/typescript-sdk/pull/3076) / [#3118](https://github.com/modelcontextprotocol/typescript-sdk/pull/3118) 均已提交、待 maintainer 审核。生产级、可溯源的中国食品数据，放心用。
 
 > 🍔 **想要连锁餐饮真实菜单数据？** 免费版覆盖 103 条通用中国食品；**FoodCalorie Pro（早鸟价 ¥29 限时，原价 ¥49 一次性买断）** 额外提供 **116 条 / 14 个连锁品牌**（肯德基、麦当劳、星巴克、瑞幸、海底捞、蜜雪冰城…）的真实菜单热量，含咖啡因/钠/过敏原，每条带官方来源链接，并赠价值 ¥99 的 Windows 运维工具箱。
 > 👉 **[查看 Pro 详情并扫码购买（早鸟 ¥29）](https://jihaochang1.github.io/foodcalorie-pro/)**
