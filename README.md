@@ -92,6 +92,8 @@ If you need "all 20 fields filled on every row", this is not that product — da
 | **Agensi** (overseas, recommended) | **$6.99 USD** one-time | Instant, auto-delivered → <https://www.agensi.io/skills/foodcalorie-pro-data> |
 | Direct (Alipay / WeChat, China) | **¥29** early bird → ¥49 | Manual, within 12h → <https://jihaochang1.github.io/foodcalorie-pro/> |
 
+Details: <https://jihaochang1.github.io/foodcalorie-pro/en.html>
+
 Both are one-time purchases, not subscriptions. Code is Apache-2.0; the Pro data pack is single-user, non-transferable.
 
 ### Maintainer
