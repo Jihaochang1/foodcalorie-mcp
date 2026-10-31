@@ -17,7 +17,9 @@ on:
         default: "0.1.3"
 
 env:
-  IMAGE: ghcr.io/${{ github.repository_owner }}/foodcalorie-mcp
+  # Container image names must be lowercase, and the GitHub owner here has a
+  # capital letter, so the real value is derived in the first step.
+  IMAGE_NAME: foodcalorie-mcp
 
 jobs:
   build:
@@ -39,6 +41,13 @@ jobs:
           fi
           echo "version=$V" >> "$GITHUB_OUTPUT"
           echo "Building foodcalorie-mcp==$V"
+
+      - name: Resolve lowercase image reference
+        id: img
+        run: |
+          OWNER="$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')"
+          echo "ref=ghcr.io/${OWNER}/${IMAGE_NAME}" >> "$GITHUB_OUTPUT"
+          echo "image will be ghcr.io/${OWNER}/${IMAGE_NAME}"
 
       - name: Wait for the release to appear on PyPI
         run: |
@@ -66,8 +75,8 @@ jobs:
           build-args: |
             VERSION=${{ steps.ver.outputs.version }}
           tags: |
-            ${{ env.IMAGE }}:${{ steps.ver.outputs.version }}
-            ${{ env.IMAGE }}:latest
+            ${{ steps.img.outputs.ref }}:${{ steps.ver.outputs.version }}
+            ${{ steps.img.outputs.ref }}:latest
           labels: |
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
             org.opencontainers.image.version=${{ steps.ver.outputs.version }}
