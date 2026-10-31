@@ -26,11 +26,35 @@ This server gives your agent the actual data, with source links, and — just as
 
 ### Install
 
+Four ways in. Pick whichever fits your client.
+
+**1. Bundle (closest to one click)** — download
+[`foodcalorie-mcp-0.1.3.mcpb`](https://github.com/Jihaochang1/foodcalorie-mcp/releases/latest/download/foodcalorie-mcp-0.1.3.mcpb)
+and open it with Claude Desktop. No JSON, no terminal. Needs `uv` on your machine; the
+bundle installs the released package on first run.
+
+**2. pip**
+
 ```bash
 pip install foodcalorie-mcp
 ```
 
 > Mirror lag: Aliyun/Tsinghua mirrors can be a few days behind. To get the current version immediately, add `--index-url https://pypi.org/simple`.
+
+**3. uvx (no install step)**
+
+```bash
+uvx --from foodcalorie-mcp foodcalorie-mcp
+```
+
+**4. Docker**
+
+```bash
+docker run -i --rm ghcr.io/jihaochang1/foodcalorie-mcp:0.1.3
+```
+
+The dataset ships inside the image and the server makes no outbound requests, so it runs
+correctly with `--network none`.
 
 ### Configure
 
@@ -119,9 +143,23 @@ PRs to the official MCP SDK: `modelcontextprotocol/python-sdk` [#3746](https://g
 
 ### 安装
 
+四种方式，选一种即可：
+
 ```bash
+# 1) 一键包：下载 .mcpb 后用 Claude Desktop 打开，无需手写 JSON
+#    https://github.com/Jihaochang1/foodcalorie-mcp/releases/latest
+
+# 2) pip
 pip install foodcalorie-mcp
+
+# 3) uvx（免安装）
+uvx --from foodcalorie-mcp foodcalorie-mcp
+
+# 4) Docker（数据内嵌、不联网，可配 --network none）
+docker run -i --rm ghcr.io/jihaochang1/foodcalorie-mcp:0.1.3
 ```
+
+> 国内镜像（阿里云/清华）可能滞后几天，要立刻拿到当前版本加 `--index-url https://pypi.org/simple`。
 
 ### 运行
 
