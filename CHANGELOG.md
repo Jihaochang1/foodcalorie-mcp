@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.2] - 2026-10-31
+
+### Added
+- `mcp-name: io.github.Jihaochang1/foodcalorie-mcp` marker in the README, required by the
+  official MCP Registry to prove PyPI package ownership before publishing.
+
+No code changes; data and tool surface are identical to 0.1.1.
+
 ## [0.1.1] - 2026-10-25
 
 ### Added

@@ -1,3 +1,5 @@
+<!-- mcp-name: io.github.Jihaochang1/foodcalorie-mcp -->
+
 # FoodCalorie MCP Server
 
 **Chinese food & restaurant-chain nutrition data for AI agents** — 6 MCP tools so your agent stops guessing how many calories are in a Luckin coconut latte.
