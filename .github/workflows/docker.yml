@@ -1,0 +1,75 @@
+name: Publish container image
+
+# Builds the image from the released PyPI wheel and pushes it to GitHub
+# Container Registry. Directories that run a container check (Glama, and any
+# reviewer who wants to verify the server without a local Python) can pull a
+# prebuilt image instead of building one from scratch.
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to build (must exist on PyPI)"
+        required: true
+        default: "0.1.3"
+
+env:
+  IMAGE: ghcr.io/${{ github.repository_owner }}/foodcalorie-mcp
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve version
+        id: ver
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            V="${{ github.event.inputs.version }}"
+          else
+            V="${GITHUB_REF_NAME#v}"
+          fi
+          echo "version=$V" >> "$GITHUB_OUTPUT"
+          echo "Building foodcalorie-mcp==$V"
+
+      - name: Wait for the release to appear on PyPI
+        run: |
+          V="${{ steps.ver.outputs.version }}"
+          for i in $(seq 1 20); do
+            if curl -fsSL "https://pypi.org/pypi/foodcalorie-mcp/$V/json" > /dev/null; then
+              echo "found $V on PyPI"; exit 0
+            fi
+            echo "not yet ($i/20)"; sleep 15
+          done
+          echo "version $V never appeared on PyPI"; exit 1
+
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          build-args: |
+            VERSION=${{ steps.ver.outputs.version }}
+          tags: |
+            ${{ env.IMAGE }}:${{ steps.ver.outputs.version }}
+            ${{ env.IMAGE }}:latest
+          labels: |
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+            org.opencontainers.image.version=${{ steps.ver.outputs.version }}
+            org.opencontainers.image.licenses=Apache-2.0
+            org.opencontainers.image.description=Chinese chain-restaurant calories and macros for 103 menu items

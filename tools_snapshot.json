@@ -1,0 +1,158 @@
+[
+ {
+  "description": "Search food nutrition data by barcode.\n\nArgs:\n    barcode: The barcode number of the food product (e.g., \"6901234567890\")\n\nReturns:\n    Nutrition information including calories, protein, fat, carbs, etc.\n",
+  "inputSchema": {
+   "properties": {
+    "barcode": {
+     "title": "Barcode",
+     "type": "string"
+    }
+   },
+   "required": [
+    "barcode"
+   ],
+   "type": "object",
+   "title": "search_food_by_barcodeArguments"
+  },
+  "name": "search_food_by_barcode",
+  "outputSchema": {
+   "type": "object",
+   "additionalProperties": true,
+   "title": "search_food_by_barcodeDictOutput"
+  }
+ },
+ {
+  "description": "Search food by name keyword.\n\nArgs:\n    keyword: Search keyword (Chinese or English)\n    limit: Maximum number of results (default: 10)\n\nReturns:\n    List of matching foods with basic nutrition info\n",
+  "inputSchema": {
+   "properties": {
+    "keyword": {
+     "title": "Keyword",
+     "type": "string"
+    },
+    "limit": {
+     "default": 10,
+     "title": "Limit",
+     "type": "integer"
+    }
+   },
+   "required": [
+    "keyword"
+   ],
+   "type": "object",
+   "title": "search_food_by_nameArguments"
+  },
+  "name": "search_food_by_name",
+  "outputSchema": {
+   "type": "object",
+   "additionalProperties": true,
+   "title": "search_food_by_nameDictOutput"
+  }
+ },
+ {
+  "description": "Get daily nutrition summary for a list of food items.\n\nArgs:\n    items: List of items, each with 'barcode' or 'name' key\n\nReturns:\n    Total nutrition summary with daily value percentages\n",
+  "inputSchema": {
+   "properties": {
+    "items": {
+     "items": {
+      "additionalProperties": {
+       "type": "string"
+      },
+      "type": "object"
+     },
+     "title": "Items",
+     "type": "array"
+    }
+   },
+   "required": [
+    "items"
+   ],
+   "type": "object",
+   "title": "get_daily_nutrition_summaryArguments"
+  },
+  "name": "get_daily_nutrition_summary",
+  "outputSchema": {
+   "type": "object",
+   "additionalProperties": true,
+   "title": "get_daily_nutrition_summaryDictOutput"
+  }
+ },
+ {
+  "description": "Get health tips for a specific food.\n\nArgs:\n    food_name: Name of the food\n\nReturns:\n    Health tips and dietary recommendations\n",
+  "inputSchema": {
+   "properties": {
+    "food_name": {
+     "title": "Food Name",
+     "type": "string"
+    }
+   },
+   "required": [
+    "food_name"
+   ],
+   "type": "object",
+   "title": "get_health_tipArguments"
+  },
+  "name": "get_health_tip",
+  "outputSchema": {
+   "type": "object",
+   "additionalProperties": true,
+   "title": "get_health_tipDictOutput"
+  }
+ },
+ {
+  "description": "List foods filtered by category.\n\nArgs:\n    category: Filter by category (e.g., '饮料', '肉类', '水果') or None for all\n    limit: Maximum number of results (default: 20)\n\nReturns:\n    List of foods in the specified category\n",
+  "inputSchema": {
+   "properties": {
+    "category": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Category"
+    },
+    "limit": {
+     "default": 20,
+     "title": "Limit",
+     "type": "integer"
+    }
+   },
+   "type": "object",
+   "title": "list_foods_by_categoryArguments"
+  },
+  "name": "list_foods_by_category",
+  "outputSchema": {
+   "type": "object",
+   "additionalProperties": true,
+   "title": "list_foods_by_categoryDictOutput"
+  }
+ },
+ {
+  "description": "Compare nutrition info for multiple foods.\n\nArgs:\n    barcode_list: List of barcodes to compare\n\nReturns:\n    Side-by-side nutrition comparison\n",
+  "inputSchema": {
+   "properties": {
+    "barcode_list": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Barcode List",
+     "type": "array"
+    }
+   },
+   "required": [
+    "barcode_list"
+   ],
+   "type": "object",
+   "title": "compare_foodsArguments"
+  },
+  "name": "compare_foods",
+  "outputSchema": {
+   "type": "object",
+   "additionalProperties": true,
+   "title": "compare_foodsDictOutput"
+  }
+ }
+]

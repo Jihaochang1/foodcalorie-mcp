@@ -10,6 +10,14 @@ import httpx
 import orjson
 from mcp.server.mcpserver import MCPServer
 
+try:
+    from importlib.metadata import PackageNotFoundError
+    from importlib.metadata import version as _dist_version
+
+    __version__ = _dist_version("foodcalorie-mcp")
+except Exception:  # running from a source checkout that was never installed
+    __version__ = "0.0.0+unknown"
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
@@ -18,7 +26,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Create MCP server
-mcp = MCPServer("foodcalorie-mcp")
+mcp = MCPServer("foodcalorie-mcp", version=__version__)
 
 # ============================================================
 # 中国食品营养数据库（v2.0 - 100+ 条真实数据）

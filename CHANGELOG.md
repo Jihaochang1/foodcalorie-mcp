@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.1.3] - 2026-10-31
+
+### Fixed
+- `initialize` now reports the real package version in `serverInfo.version`. It was an
+  empty string since 0.1.0 because `MCPServer` defaults to `version=""`. MCPB clients
+  compare this against the bundle manifest, so an empty value is a mismatch signal.
+
+### Added
+- `scripts/build_mcpb.py` and the published `foodcalorie-mcp-0.1.3.mcpb` bundle, so
+  Claude Desktop users can install with one click instead of editing JSON by hand.
+
+Tool surface and data are unchanged from 0.1.2.
+
 ## [0.1.2] - 2026-10-31
 
 ### Added

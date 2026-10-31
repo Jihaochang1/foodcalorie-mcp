@@ -12,8 +12,10 @@ ENV PYTHONUNBUFFERED=1 \
 
 WORKDIR /app
 
-# 从 PyPI 装已发布版本：目录站检查的是「用户实际装到的那个包」，不是本地源码
-RUN pip install --no-cache-dir foodcalorie-mcp==0.1.2
+# 从 PyPI 装已发布版本：目录站检查的是「用户实际装到的那个包」，不是本地源码。
+# VERSION 可由 CI 覆盖，默认指向当前发布版。
+ARG VERSION=0.1.3
+RUN pip install --no-cache-dir "foodcalorie-mcp==${VERSION}"
 
 # stdio 传输：不要加 -u 之外的任何交互参数，检查器通过 stdin/stdout 通信
 ENTRYPOINT ["python", "-m", "foodcalorie_mcp.server"]
