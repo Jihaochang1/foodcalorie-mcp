@@ -4,13 +4,13 @@ build-backend = "hatchling.build"
 
 [project]
 name = "foodcalorie-mcp"
-version = "0.1.4"
+version = "0.1.5"
 description = "MCP Server for Chinese food calorie and nutrition data - 中国食品营养数据MCP服务器"
 readme = "README.md"
 requires-python = ">=3.12"
 license = { text = "Apache-2.0" }
 authors = [
-    { name = "Jihaochang", email = "jihaochang1@users.noreply.github.com" }
+    { name = "Jihaochang", email = "358550956@qq.com" }
 ]
 keywords = ["mcp", "food", "nutrition", "calorie", "chinese-food"]
 classifiers = [
@@ -39,11 +39,8 @@ dev = [
 foodcalorie-mcp = "foodcalorie_mcp.server:main"
 
 [project.urls]
-Homepage = "https://github.com/Jihaochang1/foodcalorie-mcp"
-Documentation = "https://github.com/Jihaochang1/foodcalorie-mcp#readme"
-Repository = "https://github.com/Jihaochang1/foodcalorie-mcp.git"
-Issues = "https://github.com/Jihaochang1/foodcalorie-mcp/issues"
-Changelog = "https://github.com/Jihaochang1/foodcalorie-mcp/blob/main/CHANGELOG.md"
+Homepage = "https://foodcalorie-pro.app.workbuddy.host/?sharecode=3M6X52CI7M"
+Documentation = "https://foodcalorie-pro.app.workbuddy.host/en.html?sharecode=3M6X52CI7M"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/foodcalorie_mcp"]
