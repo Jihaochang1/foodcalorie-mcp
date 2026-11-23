@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.1.4] - 2026-11-06
+
+### Changed
+- Version 0.1.4. Tool surface and data are unchanged from 0.1.3.
+
+### Fixed
+- Refreshed the provenance trail: the MCPB bundle link, container image tag and package
+  version now all point at 0.1.4, matching the published PyPI release.
+
 ## [0.1.3] - 2026-10-31
 
 ### Fixed

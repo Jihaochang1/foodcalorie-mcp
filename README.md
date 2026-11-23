@@ -29,7 +29,7 @@ This server gives your agent the actual data, with source links, and — just as
 Four ways in. Pick whichever fits your client.
 
 **1. Bundle (closest to one click)** — download
-[`foodcalorie-mcp-0.1.3.mcpb`](https://github.com/Jihaochang1/foodcalorie-mcp/releases/latest/download/foodcalorie-mcp-0.1.3.mcpb)
+[`foodcalorie-mcp-0.1.4.mcpb`](https://github.com/Jihaochang1/foodcalorie-mcp/releases/latest/download/foodcalorie-mcp-0.1.4.mcpb)
 and open it with Claude Desktop. No JSON, no terminal. Needs `uv` on your machine; the
 bundle installs the released package on first run.
 
@@ -50,7 +50,7 @@ uvx --from foodcalorie-mcp foodcalorie-mcp
 **4. Docker**
 
 ```bash
-docker run -i --rm ghcr.io/jihaochang1/foodcalorie-mcp:0.1.3
+docker run -i --rm ghcr.io/jihaochang1/foodcalorie-mcp:0.1.4
 ```
 
 The dataset ships inside the image and the server makes no outbound requests, so it runs
@@ -156,7 +156,7 @@ pip install foodcalorie-mcp
 uvx --from foodcalorie-mcp foodcalorie-mcp
 
 # 4) Docker（数据内嵌、不联网，可配 --network none）
-docker run -i --rm ghcr.io/jihaochang1/foodcalorie-mcp:0.1.3
+docker run -i --rm ghcr.io/jihaochang1/foodcalorie-mcp:0.1.4
 ```
 
 > 国内镜像（阿里云/清华）可能滞后几天，要立刻拿到当前版本加 `--index-url https://pypi.org/simple`。
